@@ -10,16 +10,6 @@ spring:
   banner:
     location: common/banner.txt
 
-# ----------------------------------------------------------------------
-# Development profile configuration
-# ----------------------------------------------------------------------
-
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/bandsync
-    username: bandsync
-    password: bandsync
-
   jpa:
     show-sql: false
     defer-datasource-initialization: off
@@ -29,6 +19,44 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+---
+# ----------------------------------------------------------------------
+# Development profile configuration
+# ----------------------------------------------------------------------
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/bandsync_dev
+    username: bandsync
+    password: bandsync
+
+
   liquibase:
     enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.yml
+    change-log: classpath:/db/changelog/db.changelog-dev.yml
+
+---
+# ----------------------------------------------------------------------
+# Production profile configuration
+# ----------------------------------------------------------------------
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/bandsync
+    username: bandsync
+    password: bandsync
+
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-prod.yml
