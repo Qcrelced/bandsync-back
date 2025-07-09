@@ -35,7 +35,6 @@ spring:
     username: bandsync
     password: bandsync
 
-
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-dev.yml
@@ -55,7 +54,6 @@ spring:
     url: jdbc:mysql://localhost/bandsync
     username: bandsync
     password: bandsync
-
 
   liquibase:
     enabled: true
