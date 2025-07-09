@@ -1,12 +1,11 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
+      id: 2
       author: jimmy (generated)
       changes:
         - createTable:
-            tableName: user
+            tableName: band
             columns:
-
               - column:
                   name: id
                   type: int
@@ -14,31 +13,18 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-
               - column:
                   name: name
-                  type: varchar(50)
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: musical_genre
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(255)
                   constraints:
                     nullable: true
-                    unique: false
-
-              - column:
-                  name: email
-                  type: varchar(100)
-                  constraints:
-                    nullable: false
-                    unique: true
-
-              - column:
-                  name: password
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
-                    unique: false
-
-              - column:
-                  name: role
-                  type: varchar(32)
-                  constraints:
-                    nullable: false
-                    unique: false

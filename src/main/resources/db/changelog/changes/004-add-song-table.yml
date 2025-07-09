@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+        id: 5
+        author: jimmy (generated)
+        changes:
+          - createTable:
+              tableName: song
+              columns:
+                - column:
+                    name: id
+                    type: int
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: band_id
+                    type: int
+                    constraints:
+                      nullable: false
+                - column:
+                    name: title
+                    type: VARCHAR(255)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: duration
+                    type: TIMESTAMP
+                    constraints:
+                      nullable: false
+          - addForeignKeyConstraint:
+              constraintName: fk_song_band
+              baseTableName: song
+              baseColumnNames: band_id
+              referencedTableName: band
+              referencedColumnNames: id
+              onDelete: CASCADE
