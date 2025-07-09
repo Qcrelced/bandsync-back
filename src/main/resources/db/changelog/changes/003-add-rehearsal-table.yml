@@ -37,6 +37,11 @@ databaseChangeLog:
                   type: VARCHAR(512)
                   constraints:
                     nullable: true
+              - column:
+                  name: type
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
         - addForeignKeyConstraint:
             constraintName: fk_rehearsal_band
             baseTableName: rehearsal
