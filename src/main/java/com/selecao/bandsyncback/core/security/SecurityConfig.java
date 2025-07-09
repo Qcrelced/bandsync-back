@@ -50,6 +50,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/bands/**").authenticated()
                         .requestMatchers("/swagger-ui/index.html").permitAll()
                         .anyRequest().authenticated()
                 )
