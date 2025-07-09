@@ -4,6 +4,7 @@ package com.selecao.bandsyncback.webapi.auth;
 import com.selecao.bandsyncback.core.security.JwtService;
 import com.selecao.bandsyncback.core.user.User;
 import com.selecao.bandsyncback.core.user.UserRepository;
+import com.selecao.bandsyncback.webapi.dto.AuthConnexionDto;
 import com.selecao.bandsyncback.webapi.dto.AuthRegisterDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,7 @@ public class AuthWebapiService {
     }
 
 
-    public ResponseEntity<?> login(AuthRegisterDto authRequest) {
+    public ResponseEntity<?> login(AuthConnexionDto authRequest) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
