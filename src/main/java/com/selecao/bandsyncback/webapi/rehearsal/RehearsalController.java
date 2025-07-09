@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api/rehearsals")
 public class RehearsalController {
 
-    @Autowired
     private final RehearsalWebapiService rehearsalWebapiService;
 
     @GetMapping
