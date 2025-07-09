@@ -1,6 +1,8 @@
 package com.selecao.bandsyncback.webapi.auth;
 
+import com.selecao.bandsyncback.webapi.dto.AuthConnexionDto;
 import com.selecao.bandsyncback.webapi.dto.AuthRegisterDto;
+import com.selecao.bandsyncback.webapi.dto.AuthConnexionDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +20,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRegisterDto authRequest) {
+    public ResponseEntity<?> login(@RequestBody AuthConnexionDto authRequest) {
         return authService.login(authRequest);
     }
 
