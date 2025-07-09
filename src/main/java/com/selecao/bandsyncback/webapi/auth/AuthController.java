@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AuthService authService;
+    private final AuthWebapiService authWebapiService;
 
-    public AuthController(AuthService authService) {
-        this.authService = authService;
+    public AuthController(AuthWebapiService authWebapiService) {
+        this.authWebapiService = authWebapiService;
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRegisterDto authRequest) {
-        return authService.login(authRequest);
+        return authWebapiService.login(authRequest);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRegisterDto authRequest) {
-        return authService.register(authRequest);
+        return authWebapiService.register(authRequest);
     }
 }

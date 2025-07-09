@@ -37,6 +37,12 @@ databaseChangeLog:
                     unique: false
 
               - column:
+                  name: instrument
+                  type: varchar(64)
+                  constraints:
+                    nullable: true
+
+              - column:
                   name: role
                   type: varchar(32)
                   constraints:

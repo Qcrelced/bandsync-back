@@ -20,16 +20,16 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-public class AuthService {
+public class AuthWebapiService {
 
-    private static final Logger log = LoggerFactory.getLogger(AuthService.class);
+    private static final Logger log = LoggerFactory.getLogger(AuthWebapiService.class);
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    public AuthService(AuthenticationManager authenticationManager, JwtService jwtService, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public AuthWebapiService(AuthenticationManager authenticationManager, JwtService jwtService, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;

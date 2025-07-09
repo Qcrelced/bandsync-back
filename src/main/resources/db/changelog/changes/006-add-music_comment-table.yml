@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: jimmy (generated)
+      changes:
+        - createTable:
+            tableName: music_comment
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: rehearsal_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: target_user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_time_seconds
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_time_seconds
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: VARCHAR(512)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            constraintName: fk_music_comment_rehearsal
+            baseTableName: music_comment
+            baseColumnNames: rehearsal_id
+            referencedTableName: rehearsal
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            constraintName: fk_music_comment_author_user
+            baseTableName: music_comment
+            baseColumnNames: author_user_id
+            referencedTableName: user
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            constraintName: fk_music_comment_target_user
+            baseTableName: music_comment
+            baseColumnNames: target_user_id
+            referencedTableName: user
+            referencedColumnNames: id
+            onDelete: CASCADE

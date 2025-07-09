@@ -11,10 +11,11 @@ databaseChangeLog:
                   type: int
                   autoIncrement: true
                   constraints:
+                    primaryKey: true
                     nullable: false
               - column:
                   name: band_id
-                  type: BIGINT
+                  type: int
                   constraints:
                     nullable: false
               - column:
