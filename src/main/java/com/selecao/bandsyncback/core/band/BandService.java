@@ -1,6 +1,7 @@
 package com.selecao.bandsyncback.core.band;
 
 
+import com.selecao.bandsyncback.webapi.dto.BandDto;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
