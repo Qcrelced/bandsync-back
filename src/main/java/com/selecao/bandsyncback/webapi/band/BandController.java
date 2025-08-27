@@ -1,6 +1,8 @@
 package com.selecao.bandsyncback.webapi.band;
 
 
+import com.selecao.bandsyncback.core.band.Band;
+import com.selecao.bandsyncback.core.band.BandService;
 import com.selecao.bandsyncback.webapi.dto.BandDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ import java.util.List;
 public class BandController {
 
     private final BandWebapiService bandWebapiService;
+
+    private final BandService bandService;
 
     @GetMapping
     @ResponseBody
@@ -44,5 +48,12 @@ public class BandController {
     public ResponseEntity<Void> deleteBand(@PathVariable Integer id) {
         bandWebapiService.deleteBand(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<Band> updateBand(@PathVariable Integer id, @RequestBody Band bandDto) {
+        Band updatedBand = bandService.updateBand(id, bandDto);
+        return ResponseEntity.ok(updatedBand);
     }
 }
