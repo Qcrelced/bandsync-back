@@ -34,4 +34,13 @@ public class BandService {
             throw new RuntimeException("Groupe non trouvé avec l'ID : " + id);
         }
     }
+
+    public Band updateBand(Integer id, Band updatedBand) {
+        return bandRepository.findById(id).map(existingBand -> {
+            existingBand.setName(updatedBand.getName());
+            existingBand.setMusicalGenre(updatedBand.getMusicalGenre());
+            existingBand.setDescription(updatedBand.getDescription());
+            return bandRepository.save(existingBand);
+        }).orElseThrow(() -> new RuntimeException("Groupe non trouvé avec l'ID : " + id));
+    }
 }
