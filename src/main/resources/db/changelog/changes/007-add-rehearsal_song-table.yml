@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: jimmy (generated)
+      changes:
+        - createTable:
+            tableName: rehearsal_song
+            columns:
+              - column:
+                  name: rehearsal_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: song_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: rehearsal_song
+            columnNames: rehearsal_id, song_id

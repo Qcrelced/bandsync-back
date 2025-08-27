@@ -32,21 +32,4 @@ public class BandConverter {
         band.setDescription(bandDto.getDescription());
         return band;
     }
-
-
-    public Band updateEntityFromDto(Band existingBand, BandDto bandDto) {
-        if (existingBand == null || bandDto == null) {
-            throw new IllegalArgumentException("Existing band and band DTO cannot be null for update.");
-        }
-
-        if (bandDto.getName() != null) {
-            existingBand.setName(bandDto.getName());
-        }
-        if (bandDto.getMusicalGenre() != null) {
-            existingBand.setMusicalGenre(bandDto.getMusicalGenre());
-        }
-        existingBand.setDescription(bandDto.getDescription());
-
-        return existingBand;
-    }
 }

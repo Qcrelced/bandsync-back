@@ -1,12 +1,15 @@
 package com.selecao.bandsyncback.core.rehearsal;
 
 import com.selecao.bandsyncback.core.band.Band;
+import com.selecao.bandsyncback.core.song.Song;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "rehearsal")
@@ -22,6 +25,14 @@ public class Rehearsal {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "band_id", nullable = false)
     private Band band;
+
+    @ManyToMany
+    @JoinTable(
+            name = "rehearsal_songs",
+            joinColumns = @JoinColumn(name = "rehearsal_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id")
+    )
+    private List<Song> songs = new ArrayList<>();
 
     @Column(name = "scheduled_at", nullable = false)
     private LocalDateTime scheduledAt;

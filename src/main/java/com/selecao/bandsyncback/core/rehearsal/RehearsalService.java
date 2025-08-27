@@ -17,35 +17,29 @@ public class RehearsalService {
     private final RehearsalRepository rehearsalRepository;
     private final BandRepository bandRepository;
 
-    @Transactional(readOnly = true)
     public List<Rehearsal> getAllRehearsals() {
         return rehearsalRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Rehearsal getRehearsal(Integer id) {
         return rehearsalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Rehearsal not found with id: " + id));
     }
 
-    @Transactional(readOnly = true)
     public List<Rehearsal> getRehearsalsByBand(Integer bandId) {
         return rehearsalRepository.findByBandId(bandId);
     }
 
-    @Transactional(readOnly = true)
     public List<Rehearsal> getUpcomingRehearsals() {
         LocalDateTime now = LocalDateTime.now();
         return rehearsalRepository.findByScheduledAtAfterOrderByScheduledAtAsc(now);
     }
 
-    @Transactional(readOnly = true)
     public List<Rehearsal> getRehearsalsByType(String type) {
         return rehearsalRepository.findByType(type);
     }
 
     public Rehearsal createRehearsal(Rehearsal rehearsal) {
-        // Vérifier que le groupe existe
         Band band = bandRepository.findById(rehearsal.getBand().getId())
                 .orElseThrow(() -> new RuntimeException("Band not found with id: " + rehearsal.getBand().getId()));
 
@@ -56,7 +50,6 @@ public class RehearsalService {
     public Rehearsal updateRehearsal(Integer id, Rehearsal rehearsalData) {
         Rehearsal existingRehearsal = getRehearsal(id);
 
-        // Si le bandId change, vérifier que le nouveau groupe existe
         if (!existingRehearsal.getBand().getId().equals(rehearsalData.getBand().getId())) {
             Band band = bandRepository.findById(rehearsalData.getBand().getId())
                     .orElseThrow(() -> new RuntimeException("Band not found with id: " + rehearsalData.getBand().getId()));
