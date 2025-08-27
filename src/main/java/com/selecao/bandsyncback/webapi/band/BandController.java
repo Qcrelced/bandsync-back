@@ -56,4 +56,5 @@ public class BandController {
         Band updatedBand = bandService.updateBand(id, bandDto);
         return ResponseEntity.ok(updatedBand);
     }
+
 }
