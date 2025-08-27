@@ -24,7 +24,7 @@ databaseChangeLog:
                       nullable: false
                 - column:
                     name: duration
-                    type: TIMESTAMP
+                    type: VARCHAR(255)
                     constraints:
                       nullable: false
           - addForeignKeyConstraint:
